@@ -72,7 +72,7 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ onSave, onClear }) => {
           onEnd={handleStrokeEnd}
         />
       </div>
-      <div className="mt-5 w-full flex flex-wrap justify-between space-x-4">
+      <div className="mt-5 w-full flex flex-wrap justify-between">
         <button
           onClick={handleSave}
           className="cursor-pointer px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
@@ -81,38 +81,43 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ onSave, onClear }) => {
         </button>
         <button
           onClick={handleClear}
-          className="cursor-pointer px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+          disabled={currentIndex < 0}
+          className="cursor-pointer px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Clear
         </button>
         <button
           onClick={handleUndo}
           disabled={currentIndex <= 0}
-          className="px-4 py-2 bg-gray-600 text-white rounded cursor-pointer hover:bg-gray-700 transition w-full sm:w-auto disabled:opacity-50"
+          className="px-4 py-2 bg-gray-600 text-white rounded cursor-pointer hover:bg-gray-700 transition disabled:cursor-not-allowed disabled:opacity-50"
         >
           Undo
         </button>
         <button
           onClick={handleRedo}
           disabled={currentIndex >= history.length - 1}
-          className="px-4 py-2 bg-gray-600 text-white rounded cursor-pointer hover:bg-gray-700 transition w-full sm:w-auto disabled:opacity-50"
+          className="px-4 py-2 bg-gray-600 text-white rounded cursor-pointer hover:bg-gray-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Redo
         </button>
-        <input
+        
+      </div>
+      <div className="flex items-center gap-x-4">
+      <input
           type="color"
           value={penColor}
           onChange={(e) => setPenColor(e.target.value)}
-          className="p-1 h-10 w-14 rounded block bg-white border border-gray-200 cursor-grab transition"
+          className="p-1 h-10 w-20 rounded block bg-white border border-gray-200 cursor-grab transition"
           title="Choose your color"
         />
-        <input
+      <input
           type="range"
           min="1"
           max="10"
+          title="Select pen thickness"
           value={penWidth}
           onChange={(e) => setPenWidth(Number(e.target.value))}
-          className="w-full sm:w-auto"
+          className="w-full cursor-pointer"
         />
       </div>
     </div>

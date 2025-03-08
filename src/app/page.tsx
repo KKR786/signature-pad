@@ -19,6 +19,9 @@ const SignaturePage = () => {
 
   const handleClear = () => {
     setIsCleared(true);
+    setTimeout(() => {
+      setIsCleared(false);
+    }, 3000)
   };
 
   return (
@@ -26,7 +29,7 @@ const SignaturePage = () => {
       <h1 className="text-2xl font-bold text-center">Draw Your Signature</h1>
       <SignaturePad onSave={handleSave} onClear={handleClear} />
       {isCleared && (
-        <p className="text-sm text-green-600 text-center">Signature cleared!</p>
+        <p className="text-sm text-green-600 text-center border-amber-50 bg-white p-3 rounded">Signature cleared!</p>
       )}
     </div>
   );
