@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 interface PreviewModalProps {
@@ -19,7 +20,7 @@ const PreviewModal: React.FC<PreviewModalProps> = ({
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-6 rounded-lg space-y-4">
         <h2 className="text-xl font-bold">Preview Signature</h2>
-        <img src={dataUrl} alt="Signature Preview" className="max-w-full h-auto" />
+        <Image src={dataUrl} alt="Signature Preview" className="max-w-full h-auto" width={12} height={12}/>
         <div className="flex justify-end space-x-4">
           <button
             onClick={onClose}

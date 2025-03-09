@@ -6,8 +6,6 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ onSave, onClear }) => {
   const canvasRef = useRef<SignatureCanvas>(null);
   const [penColor, setPenColor] = useState<string>('black');
   const [penWidth, setPenWidth] = useState<number>(2);
-  const [undoStack, setUndoStack] = useState([]);
-  const [redoStack, setRedoStack] = useState([]);
   const [history, setHistory] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(-1);
 
